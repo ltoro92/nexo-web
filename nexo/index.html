@@ -1760,7 +1760,151 @@ footer {
     display: none;
   }
 }
-  </style>
+  @media (max-width: 460px) {
+
+  h1 {
+    font-size: 3.3rem;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-visual {
+    height: 280px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .phone {
+    transform: none;
+  }
+
+  .floating-chip {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   COTIZADOR - MOBILE COMPACTO
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .builder{
+    padding:58px 0;
+  }
+
+  .builder-wrap{
+    gap:24px;
+  }
+
+  .builder-copy h2{
+    font-size:2.35rem;
+    line-height:1;
+    margin-bottom:12px;
+  }
+
+  .builder-copy p{
+    font-size:.92rem;
+    line-height:1.55;
+    margin:0;
+  }
+
+  .builder-panel{
+    padding:16px;
+    border-radius:20px;
+  }
+
+  .project-tabs{
+    grid-template-columns:repeat(3,1fr);
+    gap:5px;
+    padding:4px;
+    margin-bottom:20px;
+  }
+
+  .project-tab{
+    padding:10px 5px;
+    gap:5px;
+    font-size:.78rem;
+  }
+
+  .project-tab svg{
+    width:16px;
+    height:16px;
+  }
+
+  .builder-panel h3{
+    font-size:1rem;
+    margin-bottom:12px;
+  }
+
+  .choice-grid,
+  .choice-grid-3{
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    margin-bottom:16px;
+  }
+
+  .choice{
+    min-height:74px;
+    padding:10px 5px;
+    gap:6px;
+    border-radius:13px;
+    font-size:.76rem;
+  }
+
+  .choice svg{
+    width:21px;
+    height:21px;
+  }
+
+  .field-row{
+    margin:12px 0;
+    gap:10px;
+  }
+
+  .field{
+    gap:6px;
+  }
+
+  .field label{
+    font-size:.76rem;
+  }
+
+  .field input,
+  .field textarea{
+    padding:11px 12px;
+    font-size:.9rem;
+    border-radius:12px;
+  }
+
+  .interest-title{
+    margin-top:18px !important;
+  }
+
+  .interest-grid{
+    gap:6px;
+    margin:10px 0 16px;
+  }
+
+  .pill{
+    padding:8px 10px;
+    font-size:.76rem;
+  }
+
+  .proposal-button{
+    width:100%;
+    margin-top:4px;
+    padding:13px 16px;
+  }
+
+}
+
+</style>
 </head>
 <body>
 
@@ -1918,7 +2062,7 @@ footer {
 
           <div class="service-visual">
             <img
-              src="img/seguridad.png"
+              src="img/Seguridad.png"
               alt="Sensores y monitoreo"
             >
           </div>
