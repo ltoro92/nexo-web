@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXO - Automatización inteligente para hogares, oficinas y espacios comerciales." />
+  <title>NEXO | Espacios inteligentes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+  --bg: #090b0e;
+  --bg-2: #101319;
+  --panel: #141820;
+  --panel-2: #1a202a;
+  --text: #f7f9fb;
+  --muted: #a9b1bd;
+  --line: rgba(255,255,255,.10);
+  --accent: #6fc8ff;
+  --accent-2: #7ef2c7;
+  --light: #f5f6f8;
+  --ink: #0f1318;
+  --shadow: 0 24px 70px rgba(0,0,0,.30);
+  --radius: 24px;
+  --radius-sm: 16px;
+  --max: 1180px;
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+  background: var(--bg);
+
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+
+  z-index: 50;
+
+  border-bottom: 1px solid transparent;
+
+  transition: .25s ease;
+}
+
+.nav.scrolled {
+  background: rgba(9,11,14,.82);
+
+  backdrop-filter: blur(16px);
+
+  border-color: var(--line);
+}
+
+.nav-inner {
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+
+  border: 1.5px solid rgba(255,255,255,.8);
+
+  border-radius: 10px;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+}
+
+.brand-mark:after {
+  content: "";
+
+  width: 12px;
+  height: 12px;
+
+  border: 1.5px solid var(--accent);
+
+  border-radius: 4px;
+
+  position: absolute;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+
+  color: #d8dde4;
+
+  font-size: .94rem;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  border: 1px solid rgba(255,255,255,.28);
+
+  border-radius: 999px;
+
+  font-size: .92rem;
+}
+
+.menu-btn {
+  display: none;
+
+  background: none;
+
+  border: 0;
+
+  color: #fff;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(56,139,199,.18),
+      transparent 26%
+    ),
+
+    radial-gradient(
+      circle at 82% 70%,
+      rgba(126,242,199,.10),
+      transparent 24%
+    ),
+
+    linear-gradient(
+      135deg,
+      #07090c 0%,
+      #0c1015 55%,
+      #0a0d10 100%
+    );
+}
+
+.hero:before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 42px 42px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 80%
+    );
+}
+
+.hero-inner {
+  padding-top: 110px;
+  padding-bottom: 60px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.05fr .95fr;
+
+  align-items: center;
+
+  gap: 60px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #dbe6ef;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.04);
+
+  border-radius: 999px;
+
+  padding: 8px 12px;
+
+  font-size: .82rem;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size:
+    clamp(3rem, 7vw, 6rem);
+
+  line-height: .94;
+
+  letter-spacing: -.06em;
+
+  margin: 0 0 24px;
+
+  max-width: 760px;
+}
+
+.hero-copy p {
+  max-width: 650px;
+
+  color: #c4cbd4;
+
+  font-size:
+    clamp(1.05rem, 2vw, 1.25rem);
+
+  margin: 0 0 28px;
+}
+
+.hero-actions {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 32px;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn {
+  border: 0;
+
+  border-radius: 999px;
+
+  padding: 14px 20px;
+
+  font-weight: 700;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  transition: .2s ease;
+}
+
+.btn-primary {
+  background: #fff;
+
+  color: #0c1015;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(255,255,255,.12);
+}
+
+.btn-secondary {
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  background:
+    rgba(255,255,255,.04);
+
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background:
+    rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   BENEFICIOS HERO
+===================================================== */
+
+.trust-row {
+  display: flex;
+
+  gap: 24px;
+
+  flex-wrap: wrap;
+
+  color: #d0d5dc;
+
+  font-size: .9rem;
+}
+
+.trust-row span {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* =====================================================
+   VISUAL HERO
+===================================================== */
+
+.hero-visual {
+  position: relative;
+
+  min-height: 590px;
+
+  display: grid;
+
+  place-items: center;
+}
+
+.glow {
+  position: absolute;
+
+  width: 440px;
+  height: 440px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(111,200,255,.26),
+      rgba(111,200,255,0) 68%
+    );
+
+  filter: blur(16px);
+}
+
+.home-card {
+  position: absolute;
+
+  width: min(100%, 520px);
+
+  aspect-ratio: 1.15;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  border-radius: 34px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.02)
+    ),
+
+    linear-gradient(
+      135deg,
+      #161b22,
+      #0c0f13
+    );
+
+  box-shadow:
+    var(--shadow);
+
+  transform:
+    rotate(-5deg)
+    translate(-18px,20px);
+
+  overflow: hidden;
+}
+
+.home-card:before {
+  content: "";
+
+  position: absolute;
+
+  inset:
+    48px 42px 70px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.09);
+
+  border-radius: 26px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent 49.6%,
+      rgba(255,255,255,.06) 50%,
+      transparent 50.4%
+    ),
+
+    linear-gradient(
+      transparent 49.6%,
+      rgba(255,255,255,.06) 50%,
+      transparent 50.4%
+    );
+}
+
+.home-card .house {
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  color:
+    rgba(255,255,255,.12);
+}
+
+.home-card .house svg {
+  width: 70%;
+  height: 70%;
+
+  stroke-width: .7;
+}
+
+.floating-chip {
+  position: absolute;
+
+  padding: 11px 13px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius: 14px;
+
+  background:
+    rgba(20,24,32,.78);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.25);
+
+  font-size: .82rem;
+
+  color: #eef3f7;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.chip-1 {
+  left: 6%;
+  top: 16%;
+}
+
+.chip-2 {
+  right: 2%;
+  top: 28%;
+}
+
+.chip-3 {
+  left: 0;
+  bottom: 13%;
+}
+
+
+/* =====================================================
+   CELULAR HERO
+===================================================== */
+
+.phone {
+  width: 270px;
+
+  border-radius: 38px;
+
+  padding: 10px;
+
+  background: #050607;
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  box-shadow:
+    0 28px 70px
+    rgba(0,0,0,.55);
+
+  position: relative;
+
+  z-index: 5;
+
+  transform:
+    translate(65px,-8px);
+}
+
+.phone-screen {
+  border-radius: 29px;
+
+  background: #11151b;
+
+  min-height: 520px;
+
+  padding:
+    26px 18px 18px;
+
+  overflow: hidden;
+}
+
+.notch {
+  width: 90px;
+  height: 21px;
+
+  border-radius: 20px;
+
+  background: #040506;
+
+  margin:
+    -18px auto 20px;
+}
+
+.phone-head {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items: center;
+
+  font-weight: 700;
+
+  margin-bottom: 6px;
+}
+
+.phone-sub {
+  color: #7f8895;
+
+  font-size: .72rem;
+
+  margin-bottom: 16px;
+}
+
+.phone-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 10px;
+}
+
+.device {
+  padding: 14px;
+
+  border-radius: 16px;
+
+  background: #1b212a;
+
+  min-height: 112px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content:
+    space-between;
+
+  border:
+    1px solid
+    rgba(255,255,255,.04);
+}
+
+.device.active {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(111,200,255,.22),
+      rgba(126,242,199,.08)
+    );
+
+  border-color:
+    rgba(111,200,255,.24);
+}
+
+.device .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.device b {
+  font-size: .76rem;
+}
+
+.device small {
+  color: #8b95a4;
+}
+
+.scene {
+  margin-top: 14px;
+
+  padding:
+    13px 14px;
+
+  border-radius: 15px;
+
+  background: #1b212a;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items: center;
+
+  font-size: .8rem;
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+section {
+  padding: 100px 0;
+}
+
+.light-section {
+  background: var(--light);
+
+  color: var(--ink);
+}
+
+.section-head {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 40px;
+
+  align-items: flex-end;
+
+  margin-bottom: 38px;
+}
+
+.section-kicker {
+  text-transform: uppercase;
+
+  letter-spacing: .14em;
+
+  font-size: .78rem;
+
+  font-weight: 700;
+
+  color: #69727f;
+
+  margin-bottom: 10px;
+}
+
+.dark-section .section-kicker {
+  color: #8f9aa8;
+}
+
+.section-head h2 {
+  font-size:
+    clamp(2.2rem,4vw,4rem);
+
+  line-height: 1;
+
+  letter-spacing:
+    -.045em;
+
+  margin: 0;
+}
+
+.section-head p {
+  max-width: 520px;
+
+  color: #606a76;
+
+  margin: 0;
+}
+
+.dark-section .section-head p {
+  color: #9da6b2;
+}
+
+
+/* =====================================================
+   SOLUCIONES / CARDS
+===================================================== */
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6,1fr);
+
+  gap: 12px;
+
+  align-items: stretch;
+}
+
+
+/* LINK COMPLETO DE LA CARD */
+
+.service-link {
+  display: block;
+
+  height: 100%;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  border-radius: 20px;
+
+  outline: none;
+}
+
+
+/* ACCESIBILIDAD CON TECLADO */
+
+.service-link:focus-visible {
+  outline:
+    3px solid
+    rgba(111,200,255,.65);
+
+  outline-offset: 4px;
+}
+
+
+/* CARD */
+
+.service-card {
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #fff;
+
+  border:
+    1px solid
+    #e3e6ea;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+
+/* HOVER DE LA CARD */
+
+.service-link:hover .service-card {
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    0 18px 40px
+    rgba(18,28,38,.12);
+
+  border-color:
+    #d0d6dd;
+}
+
+
+/* IMAGEN */
+
+.service-visual {
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #e8e8e8;
+
+  flex-shrink: 0;
+}
+
+.service-visual img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+  transition:
+    transform .4s ease;
+}
+
+.service-link:hover
+.service-visual img {
+
+  transform:
+    scale(1.045);
+}
+
+
+/* TEXTO */
+
+.service-body {
+  padding: 16px;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.service-body h3 {
+  font-size: .98rem;
+
+  line-height: 1.3;
+
+  margin:
+    0 0 7px;
+
+  color:
+    var(--ink);
+}
+
+.service-body p {
+  font-size: .82rem;
+
+  line-height: 1.55;
+
+  color: #66707c;
+
+  margin: 0;
+}
+
+
+/* =====================================================
+   COTIZADOR
+===================================================== */
+
+.builder {
+  background:
+    linear-gradient(
+      180deg,
+      #0d1117,
+      #090b0e
+    );
+
+  color: #fff;
+}
+
+.builder-wrap {
+  display: grid;
+
+  grid-template-columns:
+    .8fr 1.2fr;
+
+  gap: 40px;
+
+  align-items: start;
+}
+
+.builder-copy h2 {
+  font-size:
+    clamp(2.5rem,5vw,4.5rem);
+
+  line-height: 1;
+
+  letter-spacing: -.05em;
+
+  margin:
+    0 0 18px;
+}
+
+.builder-copy p {
+  color: #9da6b2;
+
+  max-width: 430px;
+}
+
+.builder-panel {
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius: 28px;
+
+  padding: 24px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  box-shadow:
+    var(--shadow);
+}
+
+.progress {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 8px;
+
+  margin-bottom: 22px;
+}
+
+.progress span {
+  font-size: .76rem;
+
+  color: #7f8996;
+
+  padding-bottom: 10px;
+
+  border-bottom:
+    2px solid
+    rgba(255,255,255,.08);
+}
+
+.progress span.active {
+  color: #fff;
+
+  border-color:
+    var(--accent);
+}
+
+.builder-panel h3 {
+  margin:
+    0 0 14px;
+}
+
+.choice-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.choice {
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  background: #11161d;
+
+  color: #eaf0f5;
+
+  padding:
+    18px 10px;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  min-height: 100px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  transition: .2s;
+}
+
+.choice:hover,
+.choice.selected {
+
+  border-color:
+    rgba(111,200,255,.65);
+
+  background:
+    rgba(111,200,255,.08);
+}
+
+.choice i {
+  width: 26px;
+
+  height: 26px;
+}
+
+.field-row {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 12px;
+
+  margin:
+    18px 0;
+}
+
+.field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.field label {
+  font-size: .82rem;
+
+  color: #9ba5b1;
+}
+
+.field input {
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  background: #11161d;
+
+  color: #fff;
+
+  border-radius: 14px;
+
+  padding:
+    13px 14px;
+
+  outline: none;
+}
+
+.field input:focus {
+  border-color:
+    rgba(111,200,255,.55);
+}
+
+.interest-grid {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin:
+    12px 0 18px;
+}
+
+.pill {
+  background: #11161d;
+
+  color: #d9e0e6;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  padding:
+    9px 12px;
+
+  border-radius: 999px;
+}
+
+.pill.selected {
+  background: #eaf6ff;
+
+  color: #0e1318;
+
+  border-color: #eaf6ff;
+}
+
+.builder-summary {
+  margin-top: 18px;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(126,242,199,.07);
+
+  border:
+    1px solid
+    rgba(126,242,199,.18);
+
+  color: #dffbf1;
+
+  display: none;
+}
+
+
+/* =====================================================
+   COTIZADOR - PESTAÑAS Y FORMULARIOS
+===================================================== */
+
+.project-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 5px;
+  margin-bottom: 28px;
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+}
+
+.project-tab {
+  border: 0;
+  background: transparent;
+  color: #8993a0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: .2s ease;
+}
+
+.project-tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,.04);
+}
+
+.project-tab.active {
+  background: #fff;
+  color: #101318;
+}
+
+.project-tab svg {
+  width: 19px;
+  height: 19px;
+}
+
+.project-form { display: none; }
+.project-form.active { display: block; }
+
+.choice-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.interest-title {
+  margin-top: 22px !important;
+}
+
+.proposal-button {
+  margin-top: 8px;
+}
+
+.field textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 130px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: #11161d;
+  color: #fff;
+  border-radius: 14px;
+  padding: 13px 14px;
+  outline: none;
+  font: inherit;
+}
+
+.field textarea:focus {
+  border-color: rgba(111,200,255,.55);
+}
+
+@media (max-width: 720px) {
+  .project-tabs { grid-template-columns: 1fr; }
+  .choice-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   PROCESO
+===================================================== */
+
+.process-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
+  gap: 20px;
+
+  position: relative;
+}
+
+.process-grid:before {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+  top: 28px;
+
+  height: 1px;
+
+  background: #d4d9df;
+}
+
+.process {
+  position: relative;
+
+  z-index: 2;
+}
+
+.process-num {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #fff;
+
+  border:
+    1px solid
+    #d9dee4;
+
+  margin-bottom: 18px;
+
+  font-weight: 700;
+}
+
+.process h3 {
+  font-size: 1rem;
+
+  margin:
+    0 0 7px;
+}
+
+.process p {
+  font-size: .84rem;
+
+  color: #6a7380;
+
+  margin: 0;
+}
+
+
+/* =====================================================
+   ESCENAS
+===================================================== */
+
+.scenes {
+  background:
+
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(111,200,255,.13),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      140deg,
+      #10141a,
+      #080a0d
+    );
+}
+
+.scene-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 16px;
+}
+
+.scene-card {
+  border:
+    1px solid
+    rgba(255,255,255,.11);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  padding: 24px;
+
+  min-height: 250px;
+}
+
+.scene-card i {
+  width: 30px;
+  height: 30px;
+
+  margin-bottom: 32px;
+}
+
+.scene-card h3 {
+  font-size: 1.25rem;
+
+  margin:
+    0 0 16px;
+}
+
+.scene-list {
+  display: grid;
+
+  gap: 9px;
+
+  color: #c1c8d1;
+
+  font-size: .9rem;
+}
+
+.scene-list span:before {
+  content: "✓";
+
+  color:
+    var(--accent-2);
+
+  margin-right: 8px;
+}
+
+
+/* =====================================================
+   CTA FINAL
+===================================================== */
+
+.final-cta {
+  background: #fff;
+
+  color: #101318;
+
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size:
+    clamp(2.6rem,5vw,5rem);
+
+  letter-spacing: -.06em;
+
+  line-height: .95;
+
+  margin:
+    0 auto 18px;
+
+  max-width: 850px;
+}
+
+.final-cta p {
+  color: #66707c;
+
+  max-width: 650px;
+
+  margin:
+    0 auto 28px;
+}
+
+.final-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.final-cta .btn-primary {
+  background: #0f1318;
+
+  color: #fff;
+}
+
+.final-cta .btn-secondary {
+  border-color: #cdd3da;
+
+  color: #111;
+
+  background: #fff;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 30px 0;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  color: #8e98a5;
+
+  font-size: .82rem;
+}
+
+.footer-inner {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET / NOTEBOOK
+===================================================== */
+
+@media (max-width: 980px) {
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+
+    padding-top: 130px;
+  }
+
+  .hero-visual {
+    min-height: 510px;
+  }
+
+  .phone {
+    transform:
+      translate(50px,-4px);
+  }
+
+  .service-grid {
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .builder-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .process-grid:before {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET / CELULAR
+===================================================== */
+
+@media (max-width: 720px) {
+
+  .container {
+    width:
+      min(
+        var(--max),
+        calc(100% - 28px)
+      );
+  }
+
+
+  /* MENU */
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+
+    top: 76px;
+
+    left: 14px;
+    right: 14px;
+
+    background:
+      rgba(9,11,14,.97);
+
+    border:
+      1px solid
+      var(--line);
+
+    border-radius: 18px;
+
+    padding: 16px;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+
+  /* HERO */
+
+  .hero-inner {
+    gap: 18px;
+  }
+
+  .hero-visual {
+    min-height: 420px;
+  }
+
+  .home-card {
+    width: 92%;
+  }
+
+  .phone {
+    width: 230px;
+
+    transform:
+      translate(35px,0);
+  }
+
+  .phone-screen {
+    min-height: 445px;
+
+    padding:
+      24px 14px 14px;
+  }
+
+  .device {
+    min-height: 94px;
+  }
+
+
+  /* SECCIONES */
+
+  section {
+    padding:
+      76px 0;
+  }
+
+  .section-head {
+    flex-direction: column;
+
+    align-items:
+      flex-start;
+  }
+
+
+  /* CARDS */
+
+  .service-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .service-visual {
+    height: 235px;
+  }
+
+
+  /* BUILDER */
+
+  .choice-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .progress {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  /* PROCESO */
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ESCENAS */
+
+  .scene-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE - CELULAR
+===================================================== */
+
+@media (max-width: 460px) {
+
+  h1 {
+    font-size: 3.3rem;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-visual {
+    height: 280px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .phone {
+    transform: none;
+  }
+
+  .floating-chip {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark"><i data-lucide="house"></i></span>
+        <span>NEXO</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#escenas">Escenas</a>
+        <a href="#cotizador">Cotizá</a>
+      </div>
+
+      <a href="#cotizador" class="nav-cta"><i data-lucide="message-circle"></i> Hablemos</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><i data-lucide="menu"></i></button>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><i data-lucide="sparkles"></i> Automatización para espacios reales</div>
+        <h1>Tu espacio.<br>Más inteligente.</h1>
+        <p>Diseñamos e instalamos soluciones de automatización para que tu casa, oficina o local sea más cómodo, seguro y eficiente.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cotizador">Cotizá tu proyecto <i data-lucide="arrow-right"></i></a>
+          <a class="btn btn-secondary" href="#proceso">Ver cómo funciona</a>
+        </div>
+
+        <div class="trust-row">
+          <span><i data-lucide="shield-check"></i> Seguridad</span>
+          <span><i data-lucide="leaf"></i> Eficiencia</span>
+          <span><i data-lucide="home"></i> Confort</span>
+          <span><i data-lucide="sliders-horizontal"></i> Control total</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Visual de aplicación de hogar inteligente">
+        <div class="glow"></div>
+
+        <div class="home-card">
+          <div class="house"><i data-lucide="house"></i></div>
+        </div>
+
+        <div class="floating-chip chip-1"><i data-lucide="lightbulb"></i> Living · 40%</div>
+        <div class="floating-chip chip-2"><i data-lucide="thermometer"></i> Clima · 22°</div>
+        <div class="floating-chip chip-3"><i data-lucide="lock"></i> Accesos seguros</div>
+
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="notch"></div>
+            <div class="phone-head"><span>Mi Casa</span><i data-lucide="menu"></i></div>
+            <div class="phone-sub">Ambientes · Escenas · Seguridad</div>
+
+            <div class="phone-grid">
+              <div class="device active">
+                <i class="icon" data-lucide="lightbulb"></i>
+                <div><b>Living</b><br><small>Luces 40%</small></div>
+              </div>
+              <div class="device">
+                <i class="icon" data-lucide="thermometer"></i>
+                <div><b>Climatización</b><br><small>22°</small></div>
+              </div>
+              <div class="device">
+                <i class="icon" data-lucide="panel-top"></i>
+                <div><b>Cortinas</b><br><small>Cerradas</small></div>
+              </div>
+              <div class="device">
+                <i class="icon" data-lucide="shield-check"></i>
+                <div><b>Seguridad</b><br><small>Activada</small></div>
+              </div>
+            </div>
+            <div class="scene"><span>🌙 Modo noche</span><i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="light-section" id="soluciones">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">SOLUCIONES</div>
+        <h2>¿Qué podés<br>automatizar?</h2>
+      </div>
+
+      <p>
+        Convertí tu espacio en un entorno más cómodo, seguro y eficiente.
+        <br>
+        Nosotros nos ocupamos de integrar todo.
+      </p>
+    </div>
+
+
+    <div class="service-grid">
+
+      <!-- ILUMINACIÓN -->
+      <a href="iluminacion.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/iluminacion.png"
+              alt="Iluminación inteligente"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Iluminación</h3>
+
+            <p>
+              Controlá luces, intensidad, horarios y escenas.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+
+      <!-- CLIMATIZACIÓN -->
+      <a href="climatizacion.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/climatizacion.png"
+              alt="Climatización inteligente"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Climatización</h3>
+
+            <p>
+              Controlá y automatizá la temperatura de tus ambientes
+              integrando tus dispositivos.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+
+      <!-- SENSORES -->
+      <a href="sensores.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/Seguridad.png"
+              alt="Sensores y monitoreo"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Sensores y monitoreo</h3>
+
+            <p>
+              Monitoreá movimiento, aperturas y condiciones del ambiente
+              con alertas y automatizaciones.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+
+      <!-- CORTINAS -->
+      <a href="cortinas.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/cortinas.png"
+              alt="Cortinas inteligentes"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Cortinas</h3>
+
+            <p>
+              Automatizá tus cortinas para ganar confort,
+              privacidad y control desde cualquier lugar.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+
+      <!-- ACCESOS -->
+      <a href="accesos.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/accesos.png"
+              alt="Accesos inteligentes"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Accesos</h3>
+
+            <p>
+              Gestioná ingresos, códigos temporales y apertura remota.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+
+      <!-- ESCENAS -->
+      <a href="escenas.html" class="service-link">
+        <article class="service-card">
+
+          <div class="service-visual">
+            <img
+              src="img/escenas.png"
+              alt="Escenas inteligentes"
+            >
+          </div>
+
+          <div class="service-body">
+            <h3>Escenas</h3>
+
+            <p>
+              Coordiná varios dispositivos con una sola acción.
+            </p>
+          </div>
+
+        </article>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+  <section class="builder dark-section" id="cotizador">
+    <div class="container builder-wrap">
+      <div class="builder-copy">
+        <div class="section-kicker">Tu proyecto</div>
+        <h2>Armá tu espacio inteligente.</h2>
+        <p>Contanos qué espacio querés automatizar y qué necesitás. Con esa información podemos preparar una primera propuesta adaptada a tu proyecto.</p>
+      </div>
+
+      <div class="builder-panel">
+        <div class="project-tabs" role="tablist" aria-label="Tipo de proyecto">
+          <button class="project-tab active" data-tab="hogar" type="button" role="tab" aria-selected="true">
+            <i data-lucide="house"></i><span>Hogar</span>
+          </button>
+          <button class="project-tab" data-tab="negocio" type="button" role="tab" aria-selected="false">
+            <i data-lucide="building-2"></i><span>Negocio</span>
+          </button>
+          <button class="project-tab" data-tab="otros" type="button" role="tab" aria-selected="false">
+            <i data-lucide="plus-circle"></i><span>Otros</span>
+          </button>
+        </div>
+
+        <div class="project-form active" id="form-hogar">
+          <h3>¿Qué tipo de hogar querés automatizar?</h3>
+          <div class="choice-grid choice-grid-3">
+            <button class="choice home-type" data-value="Casa" type="button"><i data-lucide="house"></i><span>Casa</span></button>
+            <button class="choice home-type" data-value="Departamento" type="button"><i data-lucide="building"></i><span>Departamento</span></button>
+            <button class="choice home-type" data-value="PH" type="button"><i data-lucide="warehouse"></i><span>PH</span></button>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="homeRooms">Cantidad de ambientes</label>
+              <input id="homeRooms" type="number" min="1" placeholder="Ej. 4">
+            </div>
+            <div class="field">
+              <label for="homeName">Nombre</label>
+              <input id="homeName" type="text" placeholder="Tu nombre">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="homeEmail">Correo electrónico</label>
+            <input id="homeEmail" type="email" placeholder="nombre@correo.com">
+          </div>
+
+          <h3 class="interest-title">¿Qué querés automatizar?</h3>
+          <div class="interest-grid" id="homeInterests">
+            <button class="pill" data-interest="Iluminación" type="button">Iluminación</button>
+            <button class="pill" data-interest="Climatización" type="button">Climatización</button>
+            <button class="pill" data-interest="Sensores y monitoreo" type="button">Sensores y monitoreo</button>
+            <button class="pill" data-interest="Cortinas" type="button">Cortinas</button>
+            <button class="pill" data-interest="Accesos" type="button">Accesos</button>
+            <button class="pill" data-interest="Escenas" type="button">Escenas</button>
+          </div>
+        </div>
+
+        <div class="project-form" id="form-negocio">
+          <h3>¿Qué tipo de espacio querés automatizar?</h3>
+          <div class="choice-grid choice-grid-3">
+            <button class="choice business-type" data-value="Oficina" type="button"><i data-lucide="briefcase-business"></i><span>Oficina</span></button>
+            <button class="choice business-type" data-value="Local comercial" type="button"><i data-lucide="store"></i><span>Local</span></button>
+            <button class="choice business-type" data-value="Edificio / Consorcio" type="button"><i data-lucide="building-2"></i><span>Edificio</span></button>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="businessAreas">Cantidad de ambientes o sectores</label>
+              <input id="businessAreas" type="number" min="1" placeholder="Ej. 8">
+            </div>
+            <div class="field">
+              <label for="businessPeople">Cantidad aproximada de personas</label>
+              <input id="businessPeople" type="number" min="1" placeholder="Ej. 25">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="businessName">Nombre</label>
+              <input id="businessName" type="text" placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="businessEmail">Correo electrónico</label>
+              <input id="businessEmail" type="email" placeholder="nombre@empresa.com">
+            </div>
+          </div>
+
+          <h3 class="interest-title">¿Qué querés automatizar?</h3>
+          <div class="interest-grid" id="businessInterests">
+            <button class="pill" data-interest="Iluminación" type="button">Iluminación</button>
+            <button class="pill" data-interest="Climatización" type="button">Climatización</button>
+            <button class="pill" data-interest="Sensores y monitoreo" type="button">Sensores y monitoreo</button>
+            <button class="pill" data-interest="Cortinas" type="button">Cortinas</button>
+            <button class="pill" data-interest="Accesos" type="button">Accesos</button>
+            <button class="pill" data-interest="Escenas" type="button">Escenas</button>
+          </div>
+        </div>
+
+        <div class="project-form" id="form-otros">
+          <h3>Contanos qué querés automatizar.</h3>
+          <div class="field">
+            <label for="otherDescription">Describí brevemente tu espacio o proyecto</label>
+            <textarea id="otherDescription" rows="5" placeholder="Ej. Tengo un consultorio, un espacio común, un alojamiento temporario o un proyecto especial..."></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="otherName">Nombre</label>
+              <input id="otherName" type="text" placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="otherEmail">Correo electrónico</label>
+              <input id="otherEmail" type="email" placeholder="nombre@correo.com">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary proposal-button" id="requestProposal" type="button">
+          Solicitar propuesta <i data-lucide="arrow-right"></i>
+        </button>
+        <div class="builder-summary" id="summary" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section" id="proceso">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Cómo trabajamos</div>
+          <h2>De la idea a la realidad.</h2>
+        </div>
+        <p>Un proceso simple para que el cliente no tenga que preocuparse por marcas, compatibilidades o configuraciones.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process"><div class="process-num">1</div><h3>Relevamos</h3><p>Entendemos la necesidad y el espacio.</p></div>
+        <div class="process"><div class="process-num">2</div><h3>Diseñamos</h3><p>Proponemos la solución y dispositivos.</p></div>
+        <div class="process"><div class="process-num">3</div><h3>Instalamos</h3><p>Ejecutamos la implementación física.</p></div>
+        <div class="process"><div class="process-num">4</div><h3>Configuramos</h3><p>Dejamos escenas y controles funcionando.</p></div>
+        <div class="process"><div class="process-num">5</div><h3>Te acompañamos</h3><p>Capacitación, soporte y ampliaciones.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scenes dark-section" id="escenas">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Escenas reales</div>
+          <h2>Un día más simple.</h2>
+        </div>
+        <p>La tecnología deja de ser protagonista y empieza a trabajar para vos, en segundo plano.</p>
+      </div>
+
+      <div class="scene-grid">
+        <article class="scene-card">
+          <i data-lucide="log-out"></i>
+          <h3>Me voy de casa</h3>
+          <div class="scene-list">
+            <span>Luces apagadas</span>
+            <span>Aire apagado</span>
+            <span>Seguridad activada</span>
+            <span>Cortinas cerradas</span>
+          </div>
+        </article>
+        <article class="scene-card">
+          <i data-lucide="clapperboard"></i>
+          <h3>Modo cine</h3>
+          <div class="scene-list">
+            <span>Luces al 20%</span>
+            <span>Cortinas cerradas</span>
+            <span>TV encendida</span>
+            <span>Ambiente preparado</span>
+          </div>
+        </article>
+        <article class="scene-card">
+          <i data-lucide="house-heart"></i>
+          <h3>Llegué a casa</h3>
+          <div class="scene-list">
+            <span>Luz de entrada encendida</span>
+            <span>Temperatura ideal</span>
+            <span>Acceso habilitado</span>
+            <span>Escena de bienvenida</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Tu espacio puede hacer mucho más.</h2>
+      <p>Empezamos por entender qué querés lograr. Después diseñamos la solución alrededor de tu espacio, no al revés.</p>
+      <div class="final-actions">
+        <a href="#cotizador" class="btn btn-primary">Cotizar mi proyecto</a>
+        <a href="#soluciones" class="btn btn-secondary">Ver soluciones</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 NEXO · Nombre provisional</div>
+      <div>Diseño · Instalación · Configuración · Soporte</div>
+    </div>
+  </footer>
+
+
+<script>
+	const WHATSAPP_NUMBER = '5491170635712';
+  lucide.createIcons();
+
+  const nav = document.getElementById('nav');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  let activeProjectType = 'hogar';
+  let selectedHomeType = '';
+  let selectedBusinessType = '';
+  const homeInterests = new Set();
+  const businessInterests = new Set();
+
+  document.querySelectorAll('.project-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      activeProjectType = target;
+
+      document.querySelectorAll('.project-tab').forEach(item => {
+        item.classList.remove('active');
+        item.setAttribute('aria-selected', 'false');
+      });
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      document.querySelectorAll('.project-form').forEach(form => form.classList.remove('active'));
+      document.getElementById(`form-${target}`).classList.add('active');
+      document.getElementById('summary').style.display = 'none';
+    });
+  });
+
+  document.querySelectorAll('.home-type').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.home-type').forEach(item => item.classList.remove('selected'));
+      button.classList.add('selected');
+      selectedHomeType = button.dataset.value;
+    });
+  });
+
+  document.querySelectorAll('.business-type').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.business-type').forEach(item => item.classList.remove('selected'));
+      button.classList.add('selected');
+      selectedBusinessType = button.dataset.value;
+    });
+  });
+
+  function setupInterestButtons(selector, selectedSet) {
+    document.querySelectorAll(selector).forEach(button => {
+      button.addEventListener('click', () => {
+        const interest = button.dataset.interest;
+        if (selectedSet.has(interest)) {
+          selectedSet.delete(interest);
+          button.classList.remove('selected');
+        } else {
+          selectedSet.add(interest);
+          button.classList.add('selected');
+        }
+      });
+    });
+  }
+
+  setupInterestButtons('#homeInterests .pill', homeInterests);
+  setupInterestButtons('#businessInterests .pill', businessInterests);
+
+  function validEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function showError(message) {
+    const summary = document.getElementById('summary');
+    summary.style.display = 'block';
+    summary.innerHTML = `<strong>Nos falta un poquito.</strong><br>${message}`;
+    summary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+document
+  .getElementById('requestProposal')
+  .addEventListener('click', () => {
+
+    const summary =
+      document.getElementById('summary');
+
+    let whatsappMessage = '';
+
+
+    /* =========================
+       HOGAR
+    ========================= */
+
+    if(activeProjectType === 'hogar'){
+
+      const rooms =
+        document.getElementById('homeRooms').value;
+
+      const name =
+        document.getElementById('homeName').value.trim();
+
+      const email =
+        document.getElementById('homeEmail').value.trim();
+
+
+      if(
+        !selectedHomeType ||
+        !rooms ||
+        !name ||
+        !email ||
+        homeInterests.size === 0
+      ){
+
+        showError(
+          'Completá el tipo de hogar, ambientes, nombre, correo y al menos una solución.'
+        );
+
+        return;
+      }
+
+
+      whatsappMessage =
+`Hola NEXO 👋
+
+Quiero consultar por un proyecto de automatización.
+
+🏠 Proyecto: Hogar
+Tipo: ${selectedHomeType}
+Ambientes: ${rooms}
+
+Me interesa:
+${Array.from(homeInterests).join(', ')}
+
+Nombre: ${name}
+Correo: ${email}`;
+    }
+
+
+
+    /* =========================
+       NEGOCIO
+    ========================= */
+
+    if(activeProjectType === 'negocio'){
+
+      const areas =
+        document.getElementById('businessAreas').value;
+
+      const people =
+        document.getElementById('businessPeople').value;
+
+      const name =
+        document.getElementById('businessName').value.trim();
+
+      const email =
+        document.getElementById('businessEmail').value.trim();
+
+
+      if(
+        !selectedBusinessType ||
+        !areas ||
+        !people ||
+        !name ||
+        !email ||
+        businessInterests.size === 0
+      ){
+
+        showError(
+          'Completá el tipo de espacio, sectores, personas, nombre, correo y al menos una solución.'
+        );
+
+        return;
+      }
+
+
+      whatsappMessage =
+`Hola NEXO 👋
+
+Quiero consultar por un proyecto de automatización.
+
+🏢 Proyecto: Negocio
+Tipo: ${selectedBusinessType}
+Sectores: ${areas}
+Personas aproximadas: ${people}
+
+Me interesa:
+${Array.from(businessInterests).join(', ')}
+
+Nombre: ${name}
+Correo: ${email}`;
+    }
+
+
+
+    /* =========================
+       OTROS
+    ========================= */
+
+    if(activeProjectType === 'otros'){
+
+      const description =
+        document.getElementById('otherDescription').value.trim();
+
+      const name =
+        document.getElementById('otherName').value.trim();
+
+      const email =
+        document.getElementById('otherEmail').value.trim();
+
+
+      if(
+        !description ||
+        !name ||
+        !email
+      ){
+
+        showError(
+          'Contanos brevemente el proyecto y completá tu nombre y correo.'
+        );
+
+        return;
+      }
+
+
+      whatsappMessage =
+`Hola NEXO 👋
+
+Quiero consultar por un proyecto de automatización.
+
+🔧 Proyecto especial:
+${description}
+
+Nombre: ${name}
+Correo: ${email}`;
+    }
+
+
+
+    /* =========================
+       ABRIR WHATSAPP
+    ========================= */
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(
+      whatsappURL,
+      '_blank'
+    );
+
+  });
+  </script>
+
+</body>
+</html>

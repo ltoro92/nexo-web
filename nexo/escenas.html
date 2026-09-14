@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Escenas y automatizaciones inteligentes para hogares, oficinas y espacios comerciales. Soluciones Starter, Smart y Advanced."
+  >
+
+  <title>
+    Escenas y Automatizaciones | NEXO
+  </title>
+
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <style>
+
+    :root{
+      --bg:#090b0e;
+      --text:#f7f9fb;
+      --line:rgba(255,255,255,.10);
+      --accent:#6fc8ff;
+      --accent-2:#7ef2c7;
+      --light:#f5f6f8;
+      --ink:#0f1318;
+      --max:1180px;
+      --shadow:0 24px 70px rgba(0,0,0,.28);
+    }
+
+
+    *{
+      box-sizing:border-box;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+
+    body{
+      margin:0;
+
+      font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:var(--bg);
+
+      color:var(--text);
+
+      line-height:1.5;
+    }
+
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+
+
+    /* =========================================
+       NAV
+    ========================================= */
+
+    .nav{
+      position:fixed;
+
+      top:0;
+      left:0;
+      right:0;
+
+      z-index:50;
+
+      background:rgba(9,11,14,.86);
+
+      backdrop-filter:blur(16px);
+
+      border-bottom:1px solid var(--line);
+    }
+
+
+    .nav-inner{
+      height:76px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:24px;
+    }
+
+
+    .brand{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      font-weight:800;
+
+      letter-spacing:.18em;
+    }
+
+
+    .brand-mark{
+      width:34px;
+      height:34px;
+
+      border:1.5px solid rgba(255,255,255,.8);
+
+      border-radius:10px;
+
+      display:grid;
+
+      place-items:center;
+
+      position:relative;
+    }
+
+
+    .brand-mark:after{
+      content:"";
+
+      width:12px;
+      height:12px;
+
+      border:1.5px solid var(--accent);
+
+      border-radius:4px;
+
+      position:absolute;
+    }
+
+
+    .nav-back{
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      padding:10px 15px;
+
+      border:1px solid rgba(255,255,255,.16);
+
+      border-radius:999px;
+
+      color:#e4e9ee;
+
+      font-size:.9rem;
+
+      transition:.2s ease;
+    }
+
+
+    .nav-back:hover{
+      background:rgba(255,255,255,.07);
+    }
+
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero{
+      min-height:66vh;
+
+      padding:106px 0 48px;
+
+      display:flex;
+
+      align-items:center;
+
+      background:
+
+        radial-gradient(
+          circle at 70% 35%,
+          rgba(111,200,255,.15),
+          transparent 25%
+        ),
+
+        linear-gradient(
+          135deg,
+          #07090c,
+          #0e1319
+        );
+    }
+
+
+    .hero-grid{
+      display:grid;
+
+      grid-template-columns:
+        1.05fr .95fr;
+
+      align-items:center;
+
+      gap:46px;
+    }
+
+
+    .eyebrow{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      border:1px solid rgba(255,255,255,.12);
+
+      background:rgba(255,255,255,.04);
+
+      border-radius:999px;
+
+      padding:7px 11px;
+
+      font-size:.76rem;
+
+      text-transform:uppercase;
+
+      letter-spacing:.1em;
+
+      margin-bottom:17px;
+
+      color:#dbe6ef;
+    }
+
+
+    h1{
+      font-size:clamp(
+        2.85rem,
+        5.1vw,
+        4.7rem
+      );
+
+      line-height:.93;
+
+      letter-spacing:-.06em;
+
+      margin:0 0 19px;
+    }
+
+
+    .hero-copy p{
+      font-size:clamp(
+        1rem,
+        1.5vw,
+        1.14rem
+      );
+
+      color:#bcc5cf;
+
+      max-width:565px;
+
+      margin:0 0 23px;
+    }
+
+
+    .hero-actions{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:10px;
+    }
+
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      gap:9px;
+
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      font-weight:700;
+
+      font-size:.91rem;
+
+      transition:.2s ease;
+    }
+
+
+    .btn-primary{
+      background:#fff;
+
+      color:#101318;
+    }
+
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.18);
+
+      color:#fff;
+    }
+
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+
+    .hero-image{
+      position:relative;
+
+      width:100%;
+
+      max-width:530px;
+
+      margin-left:auto;
+    }
+
+
+    .hero-image img{
+      width:100%;
+
+      height:auto;
+
+      aspect-ratio:16 / 9;
+
+      object-fit:cover;
+
+      object-position:center;
+
+      border-radius:23px;
+
+      box-shadow:var(--shadow);
+    }
+
+
+    .hero-label{
+      position:absolute;
+
+      left:15px;
+
+      bottom:15px;
+
+      background:rgba(9,11,14,.78);
+
+      backdrop-filter:blur(12px);
+
+      border:1px solid rgba(255,255,255,.13);
+
+      padding:9px 12px;
+
+      border-radius:12px;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      font-size:.78rem;
+    }
+
+
+
+    /* =========================================
+       SECCIONES GENERALES
+    ========================================= */
+
+    .section-head{
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:flex-end;
+
+      gap:40px;
+
+      margin-bottom:42px;
+    }
+
+
+    .section-kicker{
+      color:#657080;
+
+      font-size:.78rem;
+
+      font-weight:700;
+
+      letter-spacing:.14em;
+
+      text-transform:uppercase;
+
+      margin-bottom:10px;
+    }
+
+
+    .section-head h2{
+      font-size:clamp(
+        2.4rem,
+        5vw,
+        4rem
+      );
+
+      line-height:1;
+
+      letter-spacing:-.045em;
+
+      margin:0;
+    }
+
+
+    .section-head p{
+      max-width:500px;
+
+      color:#68727d;
+
+      margin:0;
+    }
+
+
+
+    /* =========================================
+       INTRO
+    ========================================= */
+
+    .intro-section{
+      padding:100px 0;
+
+      background:#fff;
+
+      color:#101318;
+    }
+
+
+    .intro-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:15px;
+    }
+
+
+    .intro-card{
+      padding:24px;
+
+      border:1px solid #dfe3e8;
+
+      border-radius:20px;
+
+      background:#fff;
+    }
+
+
+    .intro-icon{
+      width:48px;
+      height:48px;
+
+      border-radius:14px;
+
+      display:grid;
+
+      place-items:center;
+
+      background:#f0f6fa;
+
+      margin-bottom:26px;
+    }
+
+
+    .intro-card h3{
+      margin:0 0 8px;
+
+      font-size:1.05rem;
+    }
+
+
+    .intro-card p{
+      margin:0;
+
+      color:#69737f;
+
+      font-size:.88rem;
+    }
+
+
+
+    /* =========================================
+       NIVELES
+    ========================================= */
+
+    .levels-section{
+      padding:105px 0;
+
+      background:#f5f6f8;
+
+      color:#101318;
+    }
+
+
+    .levels-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+
+      align-items:stretch;
+    }
+
+
+    .level-card{
+      border:1px solid #dce1e6;
+
+      border-radius:24px;
+
+      padding:28px;
+
+      background:#fff;
+
+      display:flex;
+
+      flex-direction:column;
+
+      min-height:470px;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .level-card:hover{
+      transform:translateY(-5px);
+
+      box-shadow:
+        0 18px 45px
+        rgba(20,30,40,.09);
+    }
+
+
+    .level-card.smart{
+      background:#101318;
+
+      color:#fff;
+
+      border-color:#101318;
+
+      box-shadow:
+        0 20px 50px
+        rgba(10,15,20,.14);
+    }
+
+
+    .level-name{
+      display:inline-flex;
+
+      width:max-content;
+
+      padding:7px 11px;
+
+      border-radius:999px;
+
+      background:#edf2f6;
+
+      color:#27313c;
+
+      font-size:.76rem;
+
+      font-weight:800;
+
+      letter-spacing:.08em;
+
+      text-transform:uppercase;
+
+      margin-bottom:24px;
+    }
+
+
+    .level-card.smart .level-name{
+      background:rgba(111,200,255,.12);
+
+      color:#bfe7ff;
+
+      border:1px solid rgba(111,200,255,.20);
+    }
+
+
+    .level-card h3{
+      font-size:1.55rem;
+
+      line-height:1.1;
+
+      letter-spacing:-.03em;
+
+      margin:0 0 14px;
+    }
+
+
+    .level-card > p{
+      color:#66717d;
+
+      margin:0 0 24px;
+
+      font-size:.93rem;
+    }
+
+
+    .level-card.smart > p{
+      color:#aeb7c1;
+    }
+
+
+    .level-list{
+      display:grid;
+
+      gap:10px;
+
+      margin-bottom:28px;
+
+      font-size:.88rem;
+
+      color:#4f5a66;
+    }
+
+
+    .level-card.smart .level-list{
+      color:#d2d8de;
+    }
+
+
+    .level-list span{
+      display:flex;
+
+      align-items:flex-start;
+
+      gap:9px;
+    }
+
+
+    .level-list span:before{
+      content:"✓";
+
+      font-weight:800;
+
+      color:#1d8d6c;
+    }
+
+
+    .level-card.smart
+    .level-list span:before{
+      color:var(--accent-2);
+    }
+
+
+    .level-button{
+      margin-top:auto;
+
+      width:100%;
+
+      padding:13px 18px;
+
+      border-radius:999px;
+
+      display:flex;
+
+      justify-content:center;
+
+      align-items:center;
+
+      gap:8px;
+
+      border:1px solid #cfd5db;
+
+      color:#101318;
+
+      font-weight:700;
+
+      font-size:.9rem;
+
+      transition:.2s ease;
+    }
+
+
+    .level-button:hover{
+      border-color:#101318;
+    }
+
+
+    .level-card.smart .level-button{
+      background:#fff;
+
+      color:#101318;
+
+      border-color:#fff;
+    }
+
+
+    .levels-help{
+      margin-top:25px;
+
+      padding:18px 20px;
+
+      border-radius:18px;
+
+      border:1px solid #dde2e7;
+
+      background:#fff;
+
+      display:flex;
+
+      gap:12px;
+
+      align-items:flex-start;
+
+      color:#5d6773;
+
+      font-size:.9rem;
+    }
+
+
+    .levels-help i{
+      width:21px;
+
+      flex-shrink:0;
+
+      color:#101318;
+    }
+
+
+    .levels-help strong{
+      color:#101318;
+    }
+
+
+
+    /* =========================================
+       CÓMO FUNCIONA
+    ========================================= */
+
+    .logic-section{
+      padding:105px 0;
+
+      background:#0b0e12;
+    }
+
+
+    .logic-section .section-kicker{
+      color:#909ba8;
+    }
+
+
+    .logic-section .section-head p{
+      color:#9fa8b3;
+    }
+
+
+    .logic-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+
+    .logic-card{
+      border:1px solid rgba(255,255,255,.10);
+
+      background:rgba(255,255,255,.035);
+
+      border-radius:22px;
+
+      padding:27px;
+
+      min-height:260px;
+    }
+
+
+    .logic-num{
+      width:42px;
+      height:42px;
+
+      border-radius:50%;
+
+      display:grid;
+
+      place-items:center;
+
+      border:1px solid rgba(255,255,255,.14);
+
+      color:var(--accent);
+
+      font-weight:700;
+
+      margin-bottom:36px;
+    }
+
+
+    .logic-card h3{
+      margin:0 0 10px;
+
+      font-size:1.25rem;
+    }
+
+
+    .logic-card p{
+      color:#aab3be;
+
+      margin:0;
+
+      font-size:.9rem;
+    }
+
+
+    .logic-example{
+      margin-top:30px;
+
+      padding:22px;
+
+      border-radius:20px;
+
+      background:rgba(111,200,255,.07);
+
+      border:1px solid rgba(111,200,255,.17);
+
+      color:#d5e9f6;
+
+      font-size:.92rem;
+    }
+
+
+    .logic-example strong{
+      color:#fff;
+    }
+
+
+
+    /* =========================================
+       MENSAJE
+    ========================================= */
+
+    .message-section{
+      padding:110px 0;
+
+      background:#fff;
+
+      color:#101318;
+    }
+
+
+    .message-box{
+      display:grid;
+
+      grid-template-columns:
+        .9fr 1.1fr;
+
+      gap:70px;
+
+      align-items:center;
+    }
+
+
+    .message-box h2{
+      font-size:clamp(
+        2.7rem,
+        5vw,
+        4.6rem
+      );
+
+      line-height:.98;
+
+      letter-spacing:-.05em;
+
+      margin:0;
+    }
+
+
+    .message-copy{
+      font-size:1.08rem;
+
+      color:#5d6773;
+    }
+
+
+    .message-copy strong{
+      color:#101318;
+    }
+
+
+    .message-copy ul{
+      padding-left:20px;
+
+      margin:24px 0 0;
+    }
+
+
+    .message-copy li{
+      margin-bottom:9px;
+    }
+
+
+
+    /* =========================================
+   CASOS
+========================================= */
+
+.examples{
+  padding:100px 0;
+
+  background:#fff;
+
+  color:#101318;
+}
+
+
+.examples .section-kicker{
+  color:#657080;
+}
+
+
+.examples .section-head p{
+  color:#68727d;
+}
+
+
+.example-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:16px;
+}
+
+
+.example-card{
+  border:1px solid #dfe3e8;
+
+  border-radius:22px;
+
+  padding:25px;
+
+  background:#f7f8fa;
+}
+
+
+.example-card h3{
+  margin:0 0 14px;
+
+  font-size:1.2rem;
+
+  color:#101318;
+}
+
+
+.example-card p{
+  color:#69737f;
+
+  font-size:.9rem;
+
+  margin:0 0 18px;
+}
+
+
+.example-list{
+  display:grid;
+
+  gap:9px;
+
+  color:#4f5a66;
+
+  font-size:.88rem;
+}
+
+
+.example-list span:before{
+  content:"✓";
+
+  color:#168567;
+
+  margin-right:8px;
+}
+
+
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .cta{
+      padding:110px 0;
+
+      background:#f5f6f8;
+
+      color:#101318;
+
+      text-align:center;
+    }
+
+
+    .cta h2{
+      font-size:clamp(
+        2.7rem,
+        5vw,
+        5rem
+      );
+
+      letter-spacing:-.06em;
+
+      line-height:.95;
+
+      margin:0 auto 18px;
+
+      max-width:850px;
+    }
+
+
+    .cta p{
+      max-width:650px;
+
+      margin:0 auto 28px;
+
+      color:#69727f;
+    }
+
+
+    .cta .btn-primary{
+      background:#101318;
+
+      color:#fff;
+    }
+
+
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer{
+      padding:28px 0;
+
+      border-top:1px solid var(--line);
+
+      color:#8f98a4;
+
+      font-size:.82rem;
+    }
+
+
+    .footer-inner{
+      display:flex;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      flex-wrap:wrap;
+    }
+
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media(max-width:900px){
+
+      .hero{
+        min-height:auto;
+
+        padding:108px 0 52px;
+      }
+
+
+      .hero-grid{
+        grid-template-columns:1fr;
+
+        gap:34px;
+      }
+
+
+      .hero-image{
+        max-width:630px;
+
+        margin:0 auto;
+      }
+
+
+      .intro-grid{
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+
+      .levels-grid{
+        grid-template-columns:1fr;
+      }
+
+
+      .level-card{
+        min-height:auto;
+      }
+
+
+      .logic-grid{
+        grid-template-columns:1fr;
+      }
+
+
+      .message-box{
+        grid-template-columns:1fr;
+
+        gap:30px;
+      }
+
+
+      .example-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+
+    @media(max-width:600px){
+
+      .container{
+        width:calc(100% - 28px);
+      }
+
+
+      .hero{
+        min-height:auto;
+
+        padding:100px 0 40px;
+      }
+
+
+      h1{
+        font-size:clamp(
+          2.7rem,
+          13vw,
+          3.55rem
+        );
+      }
+
+
+      .hero-copy p{
+        font-size:1rem;
+      }
+
+
+      .hero-image{
+        max-width:100%;
+      }
+
+
+      .hero-image img{
+        border-radius:18px;
+      }
+
+
+      .section-head{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+
+      .intro-grid{
+        grid-template-columns:1fr;
+      }
+
+
+      .nav-back span{
+        display:none;
+      }
+
+
+      .levels-help{
+        align-items:flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       NAV
+  ========================================== -->
+
+  <nav class="nav">
+
+    <div class="container nav-inner">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          <i data-lucide="house"></i>
+        </span>
+
+        <span>NEXO</span>
+
+      </a>
+
+
+      <a
+        href="index.html#soluciones"
+        class="nav-back"
+      >
+
+        <i data-lucide="arrow-left"></i>
+
+        <span>Volver a soluciones</span>
+
+      </a>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <header class="hero">
+
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+
+          <i data-lucide="workflow"></i>
+
+          Escenas y automatizaciones
+
+        </div>
+
+
+        <h1>
+          Automatización
+          <br>
+          a tu medida.
+        </h1>
+
+
+        <p>
+          Integrá dispositivos, sensores y condiciones
+          para automatizar desde acciones simples
+          hasta rutinas avanzadas.
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            href="#cotizar"
+            class="btn btn-primary"
+          >
+
+            Quiero automatizar mi espacio
+
+            <i data-lucide="arrow-right"></i>
+
+          </a>
+
+
+          <a
+            href="#niveles"
+            class="btn btn-secondary"
+          >
+
+            Ver niveles de automatización
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image">
+
+        <img
+          src="img/escenas.png"
+          alt="Automatización inteligente integrada en un hogar"
+        >
+
+
+        <div class="hero-label">
+
+          <i data-lucide="combine"></i>
+
+          Dispositivos + lógica + automatización
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================================
+       CONCEPTO
+  ========================================== -->
+
+  <section class="intro-section">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-kicker">
+            Automatización
+          </div>
+
+          <h2>
+            Más que controlar
+            <br>
+            dispositivos.
+          </h2>
+
+        </div>
+
+
+        <p>
+          Una automatización combina información,
+          condiciones y acciones para que el espacio
+          pueda responder sin que tengas que controlar
+          cada dispositivo por separado.
+        </p>
+
+      </div>
+
+
+      <div class="intro-grid">
+
+
+        <article class="intro-card">
+
+          <div class="intro-icon">
+            <i data-lucide="mouse-pointer-click"></i>
+          </div>
+
+          <h3>
+            Acciones
+          </h3>
+
+          <p>
+            Ejecutá varias funciones desde
+            un mismo control o comando.
+          </p>
+
+        </article>
+
+
+
+        <article class="intro-card">
+
+          <div class="intro-icon">
+            <i data-lucide="radar"></i>
+          </div>
+
+          <h3>
+            Sensores
+          </h3>
+
+          <p>
+            Utilizá información del ambiente
+            para iniciar automatizaciones.
+          </p>
+
+        </article>
+
+
+
+        <article class="intro-card">
+
+          <div class="intro-icon">
+            <i data-lucide="clock-3"></i>
+          </div>
+
+          <h3>
+            Horarios
+          </h3>
+
+          <p>
+            Programá comportamientos según
+            determinados momentos del día.
+          </p>
+
+        </article>
+
+
+
+        <article class="intro-card">
+
+          <div class="intro-icon">
+            <i data-lucide="git-branch"></i>
+          </div>
+
+          <h3>
+            Condiciones
+          </h3>
+
+          <p>
+            Incorporá reglas para decidir
+            cuándo debe ejecutarse una acción.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       NIVELES
+  ========================================== -->
+
+  <section
+    class="levels-section"
+    id="niveles"
+  >
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-kicker">
+            Niveles de automatización
+          </div>
+
+          <h2>
+            Empezá simple.
+            <br>
+            Escalá cuando lo necesites.
+          </h2>
+
+        </div>
+
+
+        <p>
+          No todos los proyectos requieren el mismo nivel
+          de integración. Definimos la solución según
+          tus necesidades, dispositivos y complejidad.
+        </p>
+
+      </div>
+
+
+      <div class="levels-grid">
+
+
+        <!-- STARTER -->
+
+        <article class="level-card">
+
+          <div class="level-name">
+            Starter
+          </div>
+
+
+          <h3>
+            Automatización esencial.
+          </h3>
+
+
+          <p>
+            Para empezar con funciones concretas
+            sin automatizar todo el espacio.
+          </p>
+
+
+          <div class="level-list">
+
+            <span>
+              Control de dispositivos.
+            </span>
+
+            <span>
+              Encendido y apagado remoto.
+            </span>
+
+            <span>
+              Horarios programados.
+            </span>
+
+            <span>
+              Automatizaciones simples.
+            </span>
+
+            <span>
+              Solución preparada para crecer.
+            </span>
+
+          </div>
+
+
+          <a
+            href="index.html#cotizador"
+            class="level-button"
+          >
+
+            Quiero empezar
+
+            <i data-lucide="arrow-right"></i>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- SMART -->
+
+        <article class="level-card smart">
+
+          <div class="level-name">
+            Smart
+          </div>
+
+
+          <h3>
+            Dispositivos trabajando en conjunto.
+          </h3>
+
+
+          <p>
+            Integramos distintas soluciones para que
+            varias acciones puedan ejecutarse
+            de forma coordinada.
+          </p>
+
+
+          <div class="level-list">
+
+            <span>
+              Varias soluciones integradas.
+            </span>
+
+            <span>
+              Escenas y rutinas.
+            </span>
+
+            <span>
+              Sensores como disparadores.
+            </span>
+
+            <span>
+              Automatización por ambientes.
+            </span>
+
+            <span>
+              Acciones coordinadas.
+            </span>
+
+          </div>
+
+
+          <a
+            href="index.html#cotizador"
+            class="level-button"
+          >
+
+            Quiero empezar
+
+            <i data-lucide="arrow-right"></i>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- ADVANCED -->
+
+        <article class="level-card">
+
+          <div class="level-name">
+            Advanced
+          </div>
+
+
+          <h3>
+            Automatización con lógica.
+          </h3>
+
+
+          <p>
+            Para proyectos que requieren condiciones,
+            sensores, múltiples variables o
+            integraciones más específicas.
+          </p>
+
+
+          <div class="level-list">
+
+            <span>
+              Automatizaciones condicionales.
+            </span>
+
+            <span>
+              Múltiples sensores.
+            </span>
+
+            <span>
+              Reglas del tipo “si ocurre X, hacer Y”.
+            </span>
+
+            <span>
+              Integraciones entre sistemas.
+            </span>
+
+            <span>
+              Proyectos con necesidades particulares.
+            </span>
+
+          </div>
+
+
+          <a
+            href="index.html#cotizador"
+            class="level-button"
+          >
+
+            Evaluar mi proyecto
+
+            <i data-lucide="arrow-right"></i>
+
+          </a>
+
+        </article>
+
+
+      </div>
+
+
+      <div class="levels-help">
+
+        <i data-lucide="circle-help"></i>
+
+        <div>
+
+          <strong>
+            ¿No sabés cuál elegir?
+          </strong>
+
+          No hace falta definirlo ahora.
+          Contanos qué querés lograr y te recomendamos
+          el nivel adecuado después del relevamiento.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       LÓGICA
+  ========================================== -->
+
+  <section class="logic-section">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-kicker">
+            Cómo funciona
+          </div>
+
+          <h2>
+            Disparador.
+            <br>
+            Condición. Acción.
+          </h2>
+
+        </div>
+
+
+        <p>
+          Las automatizaciones avanzadas se diseñan
+          definiendo qué inicia el proceso, qué condiciones
+          deben cumplirse y qué acciones debe ejecutar.
+        </p>
+
+      </div>
+
+
+      <div class="logic-grid">
+
+
+        <article class="logic-card">
+
+          <div class="logic-num">
+            1
+          </div>
+
+          <h3>
+            Disparador
+          </h3>
+
+          <p>
+            Es el evento que inicia la automatización:
+            una apertura, movimiento, horario, comando
+            o cambio detectado por un sensor.
+          </p>
+
+        </article>
+
+
+
+        <article class="logic-card">
+
+          <div class="logic-num">
+            2
+          </div>
+
+          <h3>
+            Condición
+          </h3>
+
+          <p>
+            Determina si la acción debe ejecutarse.
+            Por ejemplo: horario, presencia,
+            temperatura o estado de otro dispositivo.
+          </p>
+
+        </article>
+
+
+
+        <article class="logic-card">
+
+          <div class="logic-num">
+            3
+          </div>
+
+          <h3>
+            Acción
+          </h3>
+
+          <p>
+            Es la respuesta del sistema:
+            encender, apagar, ajustar, cerrar,
+            enviar una alerta o ejecutar una escena.
+          </p>
+
+        </article>
+
+
+      </div>
+
+
+      <div class="logic-example">
+
+        <strong>Ejemplo:</strong>
+
+        si se abre una ventana mientras
+        la climatización está encendida,
+        el sistema puede apagar el equipo
+        y generar una alerta.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- =========================================
+       CASOS
+  ========================================== -->
+
+  <section class="examples">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-kicker">
+            Casos de uso
+          </div>
+
+          <h2>
+            Automatización con
+            <br>
+            un propósito.
+          </h2>
+
+        </div>
+
+
+        <p>
+          Una misma tecnología puede resolver necesidades
+          muy diferentes según el tipo de espacio.
+        </p>
+
+      </div>
+
+
+      <div class="example-grid">
+
+
+        <!-- HOGAR -->
+
+        <article class="example-card">
+
+          <h3>
+            Hogar
+          </h3>
+
+          <p>
+            Simplificá rutinas cotidianas.
+          </p>
+
+          <div class="example-list">
+
+            <span>
+              Apagar luces al salir.
+            </span>
+
+            <span>
+              Ajustar climatización por horario.
+            </span>
+
+            <span>
+              Coordinar cortinas e iluminación.
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- NEGOCIO -->
+
+        <article class="example-card">
+
+          <h3>
+            Oficina o negocio
+          </h3>
+
+          <p>
+            Mejorá operación y eficiencia.
+          </p>
+
+          <div class="example-list">
+
+            <span>
+              Apagar sectores sin ocupación.
+            </span>
+
+            <span>
+              Ajustar climatización según uso.
+            </span>
+
+            <span>
+              Automatizar apertura y cierre.
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- TEMPORARIO -->
+
+        <article class="example-card">
+
+          <h3>
+            Alquiler temporario
+          </h3>
+
+          <p>
+            Automatizá parte de la operación.
+          </p>
+
+          <div class="example-list">
+
+            <span>
+              Gestionar accesos temporales.
+            </span>
+
+            <span>
+              Apagar climatización al finalizar estadía.
+            </span>
+
+            <span>
+              Preparar el espacio para el próximo huésped.
+            </span>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       CTA
+  ========================================== -->
+
+  <section
+    class="cta"
+    id="cotizar"
+  >
+
+    <div class="container">
+
+      <h2>
+        Automatizá lo que
+        realmente necesitás.
+      </h2>
+
+
+      <p>
+        Contanos qué querés simplificar y evaluamos
+        el nivel de automatización adecuado para
+        tu espacio y presupuesto.
+      </p>
+
+
+      <a
+        href="index.html#cotizador"
+        class="btn btn-primary"
+      >
+
+        Contar mi proyecto
+
+        <i data-lucide="arrow-right"></i>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 NEXO · Nombre provisional
+      </div>
+
+      <div>
+        Diseño · Instalación · Configuración · Soporte
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+
+</body>
+
+</html>
